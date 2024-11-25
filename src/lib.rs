@@ -29,8 +29,8 @@ pub fn App() -> impl IntoView {
     provide_meta_context();
 
     view! {
-        <Html lang="en" dir="ltr" attr:data-theme="light" />
-
+        <Html lang="en" dir="ltr" attr:data-theme="gctheme" />
+        
         // sets the document title
         <Title text="Gift Card Web App" />
 
