@@ -1,0 +1,23 @@
+// use leptos::*;
+// use crate::components::ui::progress_bar::ProgressBar;
+
+// #[component]
+// pub fn Login() -> impl IntoView {
+//     let (count, set_count) = create_signal(0);
+//     view! {
+//         <div class="container">
+//             <p>"Login Page"</p>
+//             <button
+//                 class="btn btn-active btn-primary"
+//                 on:click=move |_| {
+//                     set_count.update(|n| *n += 1);
+//                 }
+//             >
+//                 Click Me
+//             </button>
+//             // now we use our component!
+//             <ProgressBar progress=count />
+
+//         </div>
+//     }
+// }
