@@ -9,8 +9,7 @@ mod utilities;
 mod commons; 
 
 // Top-Level pages
-use crate::features::home::Home;
-use crate::features::login::login::Login;
+use crate::features::landing::landing::Landing;
 use crate::features::not_found::NotFound;
 use components::layouts::navigation_bar::NavBar;
 use components::layouts::footer::Footer;
@@ -44,8 +43,8 @@ pub fn App() -> impl IntoView {
             <NavBar />
                 <div class="min-h-screen">
                     <Routes>
-                        <Route path="/login" view=Login />
-                        <Route path="/" view=Home />
+                      //  <Route path="/login" view=Login />
+                        <Route path="/" view=Landing />
                         <Route path="/*" view=NotFound />
                     </Routes>
                 </div>

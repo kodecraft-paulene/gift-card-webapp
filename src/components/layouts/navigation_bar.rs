@@ -3,9 +3,9 @@ use leptos::*;
 /// A parameterized incrementing button
 #[component]
 pub fn NavBar() -> impl IntoView {
-    
     view! {
-        <div class="navbar bg-success">
+
+        <div class="navbar bg-primary text-white">
             <div class="flex-none">
                 <button class="btn btn-square btn-ghost">
                     <svg
@@ -25,9 +25,10 @@ pub fn NavBar() -> impl IntoView {
             </div>
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl">Home</a>
-                
+
             </div>
-            
+
+
             <div class="flex-none">
                 <button class="btn btn-square btn-ghost">
                     <svg

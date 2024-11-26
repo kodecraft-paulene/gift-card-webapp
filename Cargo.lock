@@ -874,6 +874,7 @@ dependencies = [
  "serde_urlencoded",
  "uuid",
  "wasm-bindgen",
+ "wasm-bindgen-futures",
  "wasm-bindgen-test",
  "wasm-cookies",
  "web-sys",
