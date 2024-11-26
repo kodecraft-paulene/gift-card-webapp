@@ -3,23 +3,23 @@ use leptos_meta::*;
 use leptos_router::*;
 
 // Modules
+mod commons;
 mod components;
 mod features;
 mod utilities;
-mod commons; 
 
 // Top-Level pages
 use crate::features::landing::landing::Landing;
 use crate::features::not_found::NotFound;
-use components::layouts::navigation_bar::NavBar;
 use components::layouts::footer::Footer;
+use components::layouts::navigation_bar::NavBar;
+use components::layouts::sidebar::Sidebar;
 
 #[derive(Copy, Clone)]
 pub struct Refetcher(pub RwSignal<bool>);
 
 #[derive(Copy, Clone)]
 pub struct HasError(pub RwSignal<bool>);
-
 
 /// An app router which renders the homepage and handles 404's
 #[component]
@@ -29,7 +29,7 @@ pub fn App() -> impl IntoView {
 
     view! {
         <Html lang="en" dir="ltr" attr:data-theme="gctheme" />
-        
+
         // sets the document title
         <Title text="Gift Card Web App" />
 
@@ -37,21 +37,33 @@ pub fn App() -> impl IntoView {
         <Meta charset="UTF-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        
         <Router>
             <main class="font-poppins">
-            <NavBar />
+
                 <div class="min-h-screen">
+                    // You can conditionally render the Sidebar based on the route
                     <Routes>
-                      //  <Route path="/login" view=Login />
-                        <Route path="/" view=Landing />
+                        <Route path="/"  view=|| {
+                            view! {
+                                <NavBar />
+
+                                    <Landing />
+
+                            }
+                        } />
                         <Route path="/*" view=NotFound />
+                        <Route path="/home" view=|| {
+                            view! {
+                                <Sidebar>
+                                    <Landing />
+                                </Sidebar>
+                            }
+                        } />
                     </Routes>
                 </div>
-                
-            <Footer />
+
+                //<Footer />
             </main>
         </Router>
     }
 }
-
