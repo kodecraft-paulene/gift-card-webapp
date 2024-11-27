@@ -16,9 +16,9 @@ pub fn SidebarItem(path: String, label: String, icon: impl IntoView) -> impl Int
             href=path
             class=move || {
                 if is_active.get() {
-                    "flex cursor-pointer items-center gap-x-2 p-1 rounded-md text-sm mb-2 pe-10 font-semibold bg-primary text-white hover:bg-primary-focus"
+                    "flex cursor-pointer items-center gap-x-2 p-1 rounded-md text-sm mb-2 pe-10 font-semibold bg-primary text-white hover:bg-primary-focus mb-4"
                 } else {
-                    "flex cursor-pointer items-center gap-x-2 p-1 rounded-md text-sm mb-2 pe-10 font-semibold hover:bg-slate-100 hover:text-primary text-primary"
+                    "flex cursor-pointer items-center gap-x-2 p-1 rounded-md text-sm mb-2 pe-10 font-semibold hover:bg-slate-100 hover:text-primary text-primary mb-4"
                 }
             }
         >

@@ -1,40 +1,46 @@
 use crate::components::layouts::sidebaritem::SidebarItem;
+use crate::components::layouts::sidebardropdownitem::SidebarDropdownItem;
 use leptos::*;
+use crate::components::types::LinkItem; // Import from the shared module
+
+use crate::components::ui::svg;
+
 #[component]
 pub fn Sidebar(children: Children) -> impl IntoView {
     let (show_sidebar, set_show_sidebar) = create_signal(false);
-
     // Toggle Sidebar function
     let toggle_sidebar = move || {
         set_show_sidebar.update(|show| *show = !*show);
     };
+    let links = vec![
+        LinkItem {
+            url: String::from("/openorder"),
+            label: String::from("Open Orders"),
+        },
+        LinkItem {
+            url: String::from("/closedorder"),
+            label: String::from("Closed Orders"),
+        },
+        LinkItem {
+            url: String::from("/returnedorder"),
+            label: String::from("Returned Orders"),
+        },
+    ];
+    let reportlinks = vec![
+        LinkItem {
+            url: String::from("/Audit Trail"),
+            label: String::from("Audit Trail"),
+        }
+       
+    ];
     // Borrow `children` to make the closure implement `Fn` instead of `FnOnce`
     let view_fn = move || {
         view! {
 
-                // <div class="drawer lg:drawer-open">
-                //   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-                //   <div class="drawer-content">
-                //   {children()}
-                //     <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">
-                //       Open drawer
-                //     </label>
-                //   </div>
-                //   <div class="drawer-side">
-                //     <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-                //     <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-
-                //       <li><a>Sidebar Item 1</a></li>
-                //       <li><a>Sidebar Item 2</a></li>
-                //     </ul>
-                //   </div>
-                // </div>
-                //
-
-
+ 
         <div class="fixed top-0 left-0 z-50 xl:hidden p-4 text-black bg-white w-full border">
                     <button class="mt-1" on:click=move |_| toggle_sidebar()>
-                        >>>
+                   { svg::hamburger_icon()}
                     </button>
                 </div>
 
@@ -78,13 +84,15 @@ pub fn Sidebar(children: Children) -> impl IntoView {
                             </div>
                             <hr class="my-8" />
 
-                            <SidebarItem path="/home".to_string() label="Home".to_string() icon=view!{} />
-
+                            <SidebarDropdownItem  label="Orders".to_string() icon={svg::shoppingbag_icon()}  linksitem=links/>
+                            <SidebarDropdownItem  label="Reports".to_string() icon={svg::report_icon()}  linksitem=reportlinks/>
                         </div>
 
                         <div class="inset-x-0 bottom-0 h-40 border-t mt-20">
                             <div class="mt-4">
-
+                                  <SidebarItem path="/changepassword".to_string() label="Change Password".to_string() icon=view!{    {svg::key_icon()}} />
+                                  <SidebarItem path="/settings".to_string() label="Settings".to_string() icon=view!{    {svg::gear_icon()}} />
+                                  <SidebarItem path="/logout".to_string() label="Log out".to_string() icon=view!{    {svg::logout_icon()}} />
                             </div>
                         </div>
                     </div>

@@ -11,7 +11,11 @@ mod utilities;
 // Top-Level pages
 use crate::features::landing::landing::Landing;
 use crate::features::not_found::NotFound;
-use components::layouts::footer::Footer;
+use crate::features::orders::openorder::Openorder;
+use crate::features::orders::closedorder::Closedorder;
+use crate::features::orders::returnedorder::Returnedorder;
+
+
 use components::layouts::navigation_bar::NavBar;
 use components::layouts::sidebar::Sidebar;
 
@@ -48,14 +52,27 @@ pub fn App() -> impl IntoView {
                                 <NavBar />
 
                                     <Landing />
-
                             }
                         } />
                         <Route path="/*" view=NotFound />
-                        <Route path="/home" view=|| {
+                        <Route path="/openorder" view=|| {
                             view! {
                                 <Sidebar>
-                                    <Landing />
+                                    <Openorder />
+                                </Sidebar>
+                            }
+                        } />
+                        <Route path="/closedorder" view=|| {
+                            view! {
+                                <Sidebar>
+                                    <Closedorder />
+                                </Sidebar>
+                            }
+                        } />
+                        <Route path="/returnedorder" view=|| {
+                            view! {
+                                <Sidebar>
+                                    <Returnedorder />
                                 </Sidebar>
                             }
                         } />
